@@ -11,11 +11,11 @@ package ex_103;
  */
 public class AppointmentGUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AppointmentGUI
-     */
+    private AppointmentModell bl = new AppointmentModell();
     public AppointmentGUI() {
         initComponents();
+        
+        list.setModel(bl);
     }
 
     /**
@@ -38,12 +38,27 @@ public class AppointmentGUI extends javax.swing.JFrame {
         jMenu1.setText("Termine");
 
         jMAdd.setText("Hinzufügen");
+        jMAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMAddActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMAdd);
 
         jMDelete.setText("Löschen");
+        jMDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMDeleteActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMDelete);
 
         jMChange.setText("Ändern");
+        jMChange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMChangeActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMChange);
 
         jPopupMenu1.add(jMenu1);
@@ -56,12 +71,31 @@ public class AppointmentGUI extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        list.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setViewportView(list);
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAddActionPerformed
+        AppointmentDlg dialog = new AppointmentDlg(this, true);
+        dialog.setVisible(true);
+        if(dialog.isOk()){
+            bl.add(dialog.getApp());
+        }
+        
+    }//GEN-LAST:event_jMAddActionPerformed
+
+    private void jMDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMDeleteActionPerformed
+        bl.delete(list.getSelectedIndex());
+        
+    }//GEN-LAST:event_jMDeleteActionPerformed
+
+    private void jMChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMChangeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMChangeActionPerformed
 
     /**
      * @param args the command line arguments
