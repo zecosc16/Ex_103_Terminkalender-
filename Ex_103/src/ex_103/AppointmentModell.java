@@ -6,6 +6,7 @@
 package ex_103;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.AbstractListModel;
 
 /**
@@ -20,6 +21,7 @@ public class AppointmentModell extends AbstractListModel{
     public void add(Appointment app){
         filtered.add(app);
         termine.add(app);
+        Collections.sort(filtered);
         fireContentsChanged(this, 0, filtered.size()-1);
     }
     @Override
@@ -38,8 +40,14 @@ public class AppointmentModell extends AbstractListModel{
         fireContentsChanged(this, 0, filtered.size()-1);
     }
     
-    public void change(int idx){
+    public Appointment get(int idx){
         
+        return filtered.get(idx);
+    }
+    
+    public void change(int idx,Appointment app){
+        filtered.set(idx, app);
+        fireContentsChanged(this, 0, filtered.size()-1);
     }
     
 }

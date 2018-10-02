@@ -193,6 +193,8 @@ public class AppointmentDlg extends javax.swing.JDialog {
         ok = true;
         
         app = new Appointment(tfText.getText(), LocalDateTime.of(LocalDate.of(Integer.parseInt(tfYear.getText()), Integer.parseInt(tfMonat.getText()),Integer.parseInt( tfTag.getText())), LocalTime.of(Integer.parseInt(tfStunde.getText()), Integer.parseInt(tfMinute.getText()))));
+        
+        
         this.dispose();
     }//GEN-LAST:event_btÜbernehmenActionPerformed
 
@@ -203,6 +205,14 @@ public class AppointmentDlg extends javax.swing.JDialog {
 
     public boolean isOk() {
         return ok;
+    }
+    
+    public void change(Appointment app){
+        tfMinute.setText(""+app.getTime().getMinute());
+        tfMonat.setText(""+app.getTime().getMonthValue());
+        tfStunde.setText(""+app.getTime().getHour());
+        tfTag.setText(""+app.getTime().getDayOfMonth());
+        tfYear.setText(""+app.getTime().getYear());
     }
 
     public Appointment getApp() {

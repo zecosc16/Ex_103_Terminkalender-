@@ -13,7 +13,7 @@ import java.util.Locale;
  *
  * @author oskar
  */
-public class Appointment {
+public class Appointment implements Comparable<Appointment>{
     private String text;
     private LocalDateTime time;
 
@@ -22,11 +22,20 @@ public class Appointment {
         this.time = time;
     }
 
+    public LocalDateTime getTime() {
+        return time;
+    }
+
     @Override
     public String toString() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d.M.yyyy");
         DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("hh.mm");
         return String.format("%s - %s --> %s", dtf.format(time),dtf2.format(time),text);
+    }
+
+    @Override
+    public int compareTo(Appointment o) {
+        return this.time.compareTo(o.getTime());
     }
     
     

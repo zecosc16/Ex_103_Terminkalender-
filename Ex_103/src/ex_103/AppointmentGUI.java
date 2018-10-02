@@ -94,7 +94,15 @@ public class AppointmentGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMDeleteActionPerformed
 
     private void jMChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMChangeActionPerformed
-        // TODO add your handling code here:
+        AppointmentDlg d = new AppointmentDlg(this, true);
+        Appointment app = bl.get(list.getSelectedIndex());
+        d.change(app);
+        d.setVisible(true);
+        if(d.isOk()){
+            
+            bl.change(list.getSelectedIndex(),app);
+          
+        }
     }//GEN-LAST:event_jMChangeActionPerformed
 
     /**
