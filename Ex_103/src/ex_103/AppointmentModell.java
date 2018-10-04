@@ -5,8 +5,14 @@
  */
 package ex_103;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.AbstractListModel;
 
 /**
@@ -49,5 +55,23 @@ public class AppointmentModell extends AbstractListModel{
         filtered.set(idx, app);
         fireContentsChanged(this, 0, filtered.size()-1);
     }
+    
+    public void save(File f){
+        
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+            for (Appointment app : filtered) {
+                bw.write(app.toString());
+            }
+            
+            bw.flush();
+            bw.close();
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(AppointmentModell.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     
 }

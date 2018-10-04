@@ -5,6 +5,15 @@
  */
 package ex_103;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author oskar
@@ -32,6 +41,7 @@ public class AppointmentGUI extends javax.swing.JFrame {
         jMAdd = new javax.swing.JMenuItem();
         jMDelete = new javax.swing.JMenuItem();
         jMChange = new javax.swing.JMenuItem();
+        jMSave = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         list = new javax.swing.JList<>();
 
@@ -60,6 +70,14 @@ public class AppointmentGUI extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMChange);
+
+        jMSave.setText("Save");
+        jMSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMSaveActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMSave);
 
         jPopupMenu1.add(jMenu1);
 
@@ -111,7 +129,30 @@ public class AppointmentGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMChangeActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        System.out.println("hallo");    }//GEN-LAST:event_formWindowOpened
+//       JFileChooser jf = new JFileChooser();
+//       if(jf.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
+//           try {
+//               String line="";
+//               BufferedReader br = new BufferedReader(new FileReader(jf.getSelectedFile()));
+//               while((line=br.readLine())!=null){
+//                   
+//               }
+//           } catch (FileNotFoundException ex) {
+//               Logger.getLogger(AppointmentGUI.class.getName()).log(Level.SEVERE, null, ex);
+//           } catch (IOException ex) {
+//               Logger.getLogger(AppointmentGUI.class.getName()).log(Level.SEVERE, null, ex);
+//           }
+//    }
+//       
+        
+          }//GEN-LAST:event_formWindowOpened
+
+    private void jMSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSaveActionPerformed
+         JFileChooser jf = new JFileChooser();
+       if(jf.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
+           bl.save(jf.getSelectedFile());
+    } 
+    }//GEN-LAST:event_jMSaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,6 +193,7 @@ public class AppointmentGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMAdd;
     private javax.swing.JMenuItem jMChange;
     private javax.swing.JMenuItem jMDelete;
+    private javax.swing.JMenuItem jMSave;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
