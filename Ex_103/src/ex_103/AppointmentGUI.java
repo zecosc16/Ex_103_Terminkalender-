@@ -64,6 +64,11 @@ public class AppointmentGUI extends javax.swing.JFrame {
         jPopupMenu1.add(jMenu1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         list.setBorder(javax.swing.BorderFactory.createTitledBorder("Termine"));
         list.setModel(new javax.swing.AbstractListModel<String>() {
@@ -104,6 +109,9 @@ public class AppointmentGUI extends javax.swing.JFrame {
           
         }
     }//GEN-LAST:event_jMChangeActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        System.out.println("hallo");    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
